@@ -27,27 +27,21 @@ suggestions:
 # Configure the display and description of parameters
 #
 parameters :
-    input_genome :
+    genome_id :
         ui-name : |
             Genome
         short-hint : |
             The name of the input workspace genome object
 
-    ontology_translation :
-        ui-name : |
-            OntologyTranslation
-        short-hint : |
-            The name of the workspace ontology translation table
-
-    output_genome :
+    genome_output_id :
         ui-name : |
             Output Genome
         short-hint : |
-            The name of translated genome annotation object
+            The name of the output Genome object with interpro annotations
 
 description : |
-    <p>This is a KBase wrapper for the InterPro2GO method.</p>
-    <p>This method maps protein sequences in an annotated genome to GO terms with InterProScan domain scan and its associated mapping table.</p>
+    <p>This is a KBase wrapper for the InterProScan pipeline.</p>
+    <p>This method maps protein sequences in an annotated genome to InterPro using the InterProScan annotation pipeline.</p>
 
 publications :
     -
