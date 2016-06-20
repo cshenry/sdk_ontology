@@ -155,4 +155,21 @@ public class SdkOntologyClient {
         List<ElectronicAnnotationResults> res = caller.jsonrpcCall("sdk_ontology.annotationtogo", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
+
+    /**
+     * <p>Original spec-file function name: annotate_genome_with_interpro_pipeline</p>
+     * <pre>
+     * </pre>
+     * @param   params   instance of type {@link us.kbase.sdkontology.AnnotateGenomeWithInterproPipelineParams AnnotateGenomeWithInterproPipelineParams}
+     * @return   parameter "output" of type {@link us.kbase.sdkontology.StandardFunctionOutput StandardFunctionOutput}
+     * @throws IOException if an IO exception occurs
+     * @throws JsonClientException if a JSON RPC exception occurs
+     */
+    public StandardFunctionOutput annotateGenomeWithInterproPipeline(AnnotateGenomeWithInterproPipelineParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+        List<Object> args = new ArrayList<Object>();
+        args.add(params);
+        TypeReference<List<StandardFunctionOutput>> retType = new TypeReference<List<StandardFunctionOutput>>() {};
+        List<StandardFunctionOutput> res = caller.jsonrpcCall("sdk_ontology.annotate_genome_with_interpro_pipeline", args, retType, true, true, jsonRpcContext);
+        return res.get(0);
+    }
 }

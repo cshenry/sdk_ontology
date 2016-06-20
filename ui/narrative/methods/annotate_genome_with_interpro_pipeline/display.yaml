@@ -1,0 +1,63 @@
+#
+# define display information
+#
+name: InterPro2GO
+tooltip: |
+    Maps protein sequences in an annotated genome to GO terms with InterProScan domain scan and mapping table.
+screenshots: []
+
+icon: icon.png
+
+#
+# define a set of similar methods that might be useful to the user
+#
+suggestions:
+    apps:
+        related:
+            []
+        next:
+            []
+    methods:
+        related:
+            []
+        next:
+            []
+
+#
+# Configure the display and description of parameters
+#
+parameters :
+    input_genome :
+        ui-name : |
+            Genome
+        short-hint : |
+            The name of the input workspace genome object
+
+    ontology_translation :
+        ui-name : |
+            OntologyTranslation
+        short-hint : |
+            The name of the workspace ontology translation table
+
+    output_genome :
+        ui-name : |
+            Output Genome
+        short-hint : |
+            The name of translated genome annotation object
+
+description : |
+    <p>This is a KBase wrapper for the InterPro2GO method.</p>
+    <p>This method maps protein sequences in an annotated genome to GO terms with InterProScan domain scan and its associated mapping table.</p>
+
+publications :
+    -
+        pmid: 22301074
+        display-text : |
+            'Burge, Sarah, Elizabeth Kelly, David Lonsdale, Prudence Mutowo-Muellenet, Craig McAnulla, Alex Mitchell, Amaia Sangrador-Vegas, Siew-Yit Yong, Nicola Mulder, and Sarah Hunter. "Manual GO annotation of predictive protein signatures: the InterPro approach to GO curation." Database 2012 (2012): bar068.'
+        link: http://www.ncbi.nlm.nih.gov/pubmed/22301074
+
+    -
+        pmid: 25428371
+        display-text : |
+            'Mitchell, Alex, Hsin-Yu Chang, Louise Daugherty, Matthew Fraser, Sarah Hunter, Rodrigo Lopez, Craig McAnulla et al. "The InterPro protein families database: the classification resource after 15 years." Nucleic acids research 43, no. D1 (2015): D213-D221.'
+        link: http://www.ncbi.nlm.nih.gov/pubmed/25428371

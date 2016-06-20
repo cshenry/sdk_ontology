@@ -143,7 +143,7 @@
     "behavior": {
         "service-mapping": {
             "url": "",
-            "name": "sdk_ontology",
+            "name": "chenry_ontology",
             "method": "annotationtogo",
             "input_mapping": [
                 {

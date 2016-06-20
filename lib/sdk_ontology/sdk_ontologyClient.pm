@@ -217,6 +217,109 @@ ElectronicAnnotationResults is a reference to a hash where the following keys ar
     }
 }
  
+
+
+=head2 annotate_genome_with_interpro_pipeline
+
+  $output = $obj->annotate_genome_with_interpro_pipeline($params)
+
+=over 4
+
+=item Parameter and return types
+
+=begin html
+
+<pre>
+$params is a sdk_ontology.AnnotateGenomeWithInterproPipelineParams
+$output is a sdk_ontology.StandardFunctionOutput
+AnnotateGenomeWithInterproPipelineParams is a reference to a hash where the following keys are defined:
+	workspace has a value which is a sdk_ontology.workspace_name
+	genome_workspace has a value which is a sdk_ontology.workspace_name
+	genome_id has a value which is a sdk_ontology.genome_id
+	genome_output_id has a value which is a sdk_ontology.genome_id
+workspace_name is a string
+genome_id is a string
+StandardFunctionOutput is a reference to a hash where the following keys are defined:
+	report_name has a value which is a string
+	report_ref has a value which is a sdk_ontology.ws_report_id
+ws_report_id is a string
+
+</pre>
+
+=end html
+
+=begin text
+
+$params is a sdk_ontology.AnnotateGenomeWithInterproPipelineParams
+$output is a sdk_ontology.StandardFunctionOutput
+AnnotateGenomeWithInterproPipelineParams is a reference to a hash where the following keys are defined:
+	workspace has a value which is a sdk_ontology.workspace_name
+	genome_workspace has a value which is a sdk_ontology.workspace_name
+	genome_id has a value which is a sdk_ontology.genome_id
+	genome_output_id has a value which is a sdk_ontology.genome_id
+workspace_name is a string
+genome_id is a string
+StandardFunctionOutput is a reference to a hash where the following keys are defined:
+	report_name has a value which is a string
+	report_ref has a value which is a sdk_ontology.ws_report_id
+ws_report_id is a string
+
+
+=end text
+
+=item Description
+
+
+
+=back
+
+=cut
+
+ sub annotate_genome_with_interpro_pipeline
+{
+    my($self, @args) = @_;
+
+# Authentication: required
+
+    if ((my $n = @args) != 1)
+    {
+	Bio::KBase::Exceptions::ArgumentValidationError->throw(error =>
+							       "Invalid argument count for function annotate_genome_with_interpro_pipeline (received $n, expecting 1)");
+    }
+    {
+	my($params) = @args;
+
+	my @_bad_arguments;
+        (ref($params) eq 'HASH') or push(@_bad_arguments, "Invalid type for argument 1 \"params\" (value was \"$params\")");
+        if (@_bad_arguments) {
+	    my $msg = "Invalid arguments passed to annotate_genome_with_interpro_pipeline:\n" . join("", map { "\t$_\n" } @_bad_arguments);
+	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
+								   method_name => 'annotate_genome_with_interpro_pipeline');
+	}
+    }
+
+    my $result = $self->{client}->call($self->{url}, $self->{headers}, {
+	method => "sdk_ontology.annotate_genome_with_interpro_pipeline",
+	params => \@args,
+    });
+    if ($result) {
+	if ($result->is_error) {
+	    Bio::KBase::Exceptions::JSONRPC->throw(error => $result->error_message,
+					       code => $result->content->{error}->{code},
+					       method_name => 'annotate_genome_with_interpro_pipeline',
+					       data => $result->content->{error}->{error} # JSON::RPC::ReturnObject only supports JSONRPC 1.1 or 1.O
+					      );
+	} else {
+	    return wantarray ? @{$result->result} : $result->result->[0];
+	}
+    } else {
+        Bio::KBase::Exceptions::HTTP->throw(error => "Error invoking method annotate_genome_with_interpro_pipeline",
+					    status_line => $self->{client}->status_line,
+					    method_name => 'annotate_genome_with_interpro_pipeline',
+				       );
+    }
+}
+ 
   
 
 sub version {
@@ -230,16 +333,16 @@ sub version {
             Bio::KBase::Exceptions::JSONRPC->throw(
                 error => $result->error_message,
                 code => $result->content->{code},
-                method_name => 'annotationtogo',
+                method_name => 'annotate_genome_with_interpro_pipeline',
             );
         } else {
             return wantarray ? @{$result->result} : $result->result->[0];
         }
     } else {
         Bio::KBase::Exceptions::HTTP->throw(
-            error => "Error invoking method annotationtogo",
+            error => "Error invoking method annotate_genome_with_interpro_pipeline",
             status_line => $self->{client}->status_line,
-            method_name => 'annotationtogo',
+            method_name => 'annotate_genome_with_interpro_pipeline',
         );
     }
 }
@@ -273,6 +376,131 @@ sub _validate_version {
 }
 
 =head1 TYPES
+
+
+
+=head2 bool
+
+=over 4
+
+
+
+=item Description
+
+A binary boolean
+
+
+=item Definition
+
+=begin html
+
+<pre>
+an int
+</pre>
+
+=end html
+
+=begin text
+
+an int
+
+=end text
+
+=back
+
+
+
+=head2 genome_id
+
+=over 4
+
+
+
+=item Description
+
+A string representing a Genome id.
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a string
+</pre>
+
+=end html
+
+=begin text
+
+a string
+
+=end text
+
+=back
+
+
+
+=head2 workspace_name
+
+=over 4
+
+
+
+=item Description
+
+A string representing a workspace name.
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a string
+</pre>
+
+=end html
+
+=begin text
+
+a string
+
+=end text
+
+=back
+
+
+
+=head2 ws_report_id
+
+=over 4
+
+
+
+=item Description
+
+The workspace ID for a Report object
+@id ws KBaseReport.Report
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a string
+</pre>
+
+=end html
+
+=begin text
+
+a string
+
+=end text
+
+=back
 
 
 
@@ -358,6 +586,74 @@ report_ref has a value which is a string
 output_genome_ref has a value which is a string
 n_total_features has a value which is an int
 n_features_mapped has a value which is an int
+
+
+=end text
+
+=back
+
+
+
+=head2 StandardFunctionOutput
+
+=over 4
+
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a reference to a hash where the following keys are defined:
+report_name has a value which is a string
+report_ref has a value which is a sdk_ontology.ws_report_id
+
+</pre>
+
+=end html
+
+=begin text
+
+a reference to a hash where the following keys are defined:
+report_name has a value which is a string
+report_ref has a value which is a sdk_ontology.ws_report_id
+
+
+=end text
+
+=back
+
+
+
+=head2 AnnotateGenomeWithInterproPipelineParams
+
+=over 4
+
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a reference to a hash where the following keys are defined:
+workspace has a value which is a sdk_ontology.workspace_name
+genome_workspace has a value which is a sdk_ontology.workspace_name
+genome_id has a value which is a sdk_ontology.genome_id
+genome_output_id has a value which is a sdk_ontology.genome_id
+
+</pre>
+
+=end html
+
+=begin text
+
+a reference to a hash where the following keys are defined:
+workspace has a value which is a sdk_ontology.workspace_name
+genome_workspace has a value which is a sdk_ontology.workspace_name
+genome_id has a value which is a sdk_ontology.genome_id
+genome_output_id has a value which is a sdk_ontology.genome_id
 
 
 =end text

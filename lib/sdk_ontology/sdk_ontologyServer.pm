@@ -31,6 +31,9 @@ our %return_counts = (
         'annotationtogo' => 1,
         'annotationtogo_async' => 1,
         'annotationtogo_check' => 1,
+        'annotate_genome_with_interpro_pipeline' => 1,
+        'annotate_genome_with_interpro_pipeline_async' => 1,
+        'annotate_genome_with_interpro_pipeline_check' => 1,
         'version' => 1,
 );
 
@@ -38,18 +41,24 @@ our %method_authentication = (
         'annotationtogo' => 'required',
         'annotationtogo_async' => 'required',
         'annotationtogo_check' => 'required',
+        'annotate_genome_with_interpro_pipeline' => 'required',
+        'annotate_genome_with_interpro_pipeline_async' => 'required',
+        'annotate_genome_with_interpro_pipeline_check' => 'required',
 );
 
 our %sync_methods = (
         'annotationtogo' => 1,
+        'annotate_genome_with_interpro_pipeline' => 1,
 );
 
 our %async_run_methods = (
         'annotationtogo_async' => 'sdk_ontology.annotationtogo',
+        'annotate_genome_with_interpro_pipeline_async' => 'sdk_ontology.annotate_genome_with_interpro_pipeline',
 );
 
 our %async_check_methods = (
         'annotationtogo_check' => 'sdk_ontology.annotationtogo',
+        'annotate_genome_with_interpro_pipeline_check' => 'sdk_ontology.annotate_genome_with_interpro_pipeline',
 );
 
 sub _build_valid_methods
@@ -59,6 +68,9 @@ sub _build_valid_methods
         'annotationtogo' => 1,
         'annotationtogo_async' => 1,
         'annotationtogo_check' => 1,
+        'annotate_genome_with_interpro_pipeline' => 1,
+        'annotate_genome_with_interpro_pipeline_async' => 1,
+        'annotate_genome_with_interpro_pipeline_check' => 1,
         'version' => 1,
     };
     return $methods;

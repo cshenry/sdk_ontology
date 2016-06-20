@@ -1,0 +1,78 @@
+{
+    "ver": "0.0.1",
+    "authors": [
+        "fangfang"
+    ],
+    "contact": "help@kbase.us",
+    "visible": true,
+    "categories": ["active"],
+    "widgets": {
+        "input": null,
+        "output": "kbaseGenomeView"
+    },
+    "parameters": [
+        {
+            "id": "genome_id",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "valid_ws_types": [ "KBaseGenomes.Genome" ]
+            }
+        },
+		{
+			"id" : "genome_output_id",
+			"optional" : false,
+			"advanced" : false,
+			"allow_multiple" : false,
+			"default_values" : [ "" ],
+			"field_type" : "text",
+			"text_options" : {
+			"valid_ws_types" : [ "KBaseGenomes.Genome" ],
+			"is_output_name":true
+			}
+		}
+    ],
+    "behavior": {
+        "service-mapping": {
+            "url": "",
+            "name": "chenry_ontology",
+            "method": "annotate_genome_with_interpro_pipeline",
+            "input_mapping": [
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace"
+                },
+                {
+                    "input_parameter": "genome_id",
+                    "target_property": "genome_id"
+                },
+				{
+					"input_parameter": "genome_output_id",
+					"target_property": "genome_output_id"
+				}
+            ],
+            "output_mapping": [
+                {
+                    "service_method_output_path": [0,"report_name"],
+                    "target_property": "report_name"
+                },
+                {
+                    "service_method_output_path": [0,"report_ref"],
+                    "target_property": "report_ref"
+                },
+                {
+                    "constant_value": "5",
+                    "target_property": "report_window_line_height"
+                },
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace_name"
+                }
+            ]
+        }
+    },
+    "job_id_output_field": "docker"
+}

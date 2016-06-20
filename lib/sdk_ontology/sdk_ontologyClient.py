@@ -177,4 +177,11 @@ class sdk_ontology(object):
         resp = self._call('sdk_ontology.annotationtogo',
                           [params], json_rpc_context)
         return resp[0]
+  
+    def annotate_genome_with_interpro_pipeline(self, params, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method annotate_genome_with_interpro_pipeline: argument json_rpc_context is not type dict as required.')
+        resp = self._call('sdk_ontology.annotate_genome_with_interpro_pipeline',
+                          [params], json_rpc_context)
+        return resp[0]
  
